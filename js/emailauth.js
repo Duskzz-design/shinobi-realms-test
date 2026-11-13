@@ -1,5 +1,5 @@
 // Email + password accounts, and the human check (Cloudflare Turnstile) shared by every way of signing in.
-import * as net from './net.js';
+import * as net from './net.js?v=9d1c820';
 
 export const TURNSTILE_SITE_KEY = '0x4AAAAAAF_-YNdCR9rZ9kgK';
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));

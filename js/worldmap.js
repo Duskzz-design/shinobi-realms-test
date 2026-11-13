@@ -1,8 +1,8 @@
 // World map (through the Village Gate): travel to quest locations and boss lairs.
-import * as net from './net.js';
-import { gearIconHTML } from './itemicons.js';
-import * as G from './engine.js';
-import { VILLAGES } from './sprites.js';
+import * as net from './net.js?v=9d1c820';
+import { gearIconHTML } from './itemicons.js?v=9d1c820';
+import * as G from './engine.js?v=9d1c820';
+import { VILLAGES } from './sprites.js?v=9d1c820';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const h = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; };

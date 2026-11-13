@@ -1,11 +1,11 @@
-import * as net from './net.js';
-import { sharpenText } from './crisp.js';
-import { startPixify } from './pixemoji.js';
-import { startTitleScene } from './scene.js';
-import { enterWorld } from './game.js';
-import { humanCheck, mountEmail, authMessage, linkParams, cleanLinkParams, newPasswordCard } from './emailauth.js';
-import { ELEMENT_INFO, BLOODLINES, ELEMENTS } from './engine.js';
-import { ninjaSprite, emblem, PALETTES, HAIR_STYLES, BAND_SPOTS, VILLAGES, DEFAULT_LOOK, lookOf } from './sprites.js';
+import * as net from './net.js?v=9d1c820';
+import { sharpenText } from './crisp.js?v=9d1c820';
+import { startPixify } from './pixemoji.js?v=9d1c820';
+import { startTitleScene } from './scene.js?v=9d1c820';
+import { enterWorld } from './game.js?v=9d1c820';
+import { humanCheck, mountEmail, authMessage, linkParams, cleanLinkParams, newPasswordCard } from './emailauth.js?v=9d1c820';
+import { ELEMENT_INFO, BLOODLINES, ELEMENTS } from './engine.js?v=9d1c820';
+import { ninjaSprite, emblem, PALETTES, HAIR_STYLES, BAND_SPOTS, VILLAGES, DEFAULT_LOOK, lookOf } from './sprites.js?v=9d1c820';
 
 const app = document.getElementById('app');
 const bg = document.getElementById('bg');

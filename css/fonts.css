@@ -1,4 +1,4 @@
 /* Game fonts, served from our own site (the original font files, unmodified).
    Headings and buttons: Press Start 2P. Everything else: Pixelify Sans. */
-@font-face { font-family: 'Press Start 2P'; src: url(../assets/fonts/PressStart2P-Regular.ttf) format('truetype'); font-display: swap; }
-@font-face { font-family: 'Pixelify Sans'; font-weight: 400 700; src: url(../assets/fonts/PixelifySans.ttf) format('truetype'); font-display: swap; }
+@font-face { font-family: 'Press Start 2P'; src: url(../assets/fonts/PressStart2P-Regular.ttf?v=9d1c820) format('truetype'); font-display: swap; }
+@font-face { font-family: 'Pixelify Sans'; font-weight: 400 700; src: url(../assets/fonts/PixelifySans.ttf?v=9d1c820) format('truetype'); font-display: swap; }

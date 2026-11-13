@@ -193,7 +193,7 @@ export async function deleteAccount() {
 
 // ---------- character ----------
 export async function loadCharacter() {
-  if (OFFLINE) { const c = sessionStorage.getItem('mockChar'); if (!c) return null; const o = await import('./offline.js'); const x = JSON.parse(c); o.enrich(x); saveMock(x); return o.enrich(x); }
+  if (OFFLINE) { const c = sessionStorage.getItem('mockChar'); if (!c) return null; const o = await import('./offline.js?v=9d1c820'); const x = JSON.parse(c); o.enrich(x); saveMock(x); return o.enrich(x); }
   const { data, error } = await sb.rpc('get_me');
   if (error) throw error;
   return data;
@@ -207,7 +207,7 @@ export async function nameAvailable(name) {
 export async function createCharacter({ name, village, appearance }) {
   if (OFFLINE) {
     const c = { user_id: JSON.parse(sessionStorage.getItem('mockUser')).id, name, village, appearance, level: 1, xp: 0, rank: 'Academy Student', strength: 5, agility: 5, intelligence: 5, willpower: 5, energy: 100, energy_at: Date.now(), jutsu: {}, ryo: 100 };
-    sessionStorage.setItem('mockChar', JSON.stringify(c)); return (await import('./offline.js')).enrich(c);
+    sessionStorage.setItem('mockChar', JSON.stringify(c)); return (await import('./offline.js?v=9d1c820')).enrich(c);
   }
   const { error } = await sb.from('characters').insert({ name, village, appearance });
   if (error) {
@@ -322,7 +322,7 @@ function makeBots(onEvent) {
 
 // ---------- rank exams ----------
 export async function examInfo() {
-  if (OFFLINE) { const o = await import('./offline.js'); return o.examInfo(mockChar()); }
+  if (OFFLINE) { const o = await import('./offline.js?v=9d1c820'); return o.examInfo(mockChar()); }
   const { data, error } = await sb.rpc('exam_info'); if (error) throw rpcErr(error); return data;
 }
 let catalog = null, mockBattle = null;
@@ -341,11 +341,11 @@ async function battleCall(body) {
   return data;
 }
 export async function startExam() {
-  if (OFFLINE) { const o = await import('./offline.js'); const c = mockChar(); mockBattle = o.mockStartExam(c); saveMock(c); return clone(mockBattle); }
+  if (OFFLINE) { const o = await import('./offline.js?v=9d1c820'); const c = mockChar(); mockBattle = o.mockStartExam(c); saveMock(c); return clone(mockBattle); }
   return battleCall({ op: 'exam' });
 }
 export async function examContinue(battleId) {
-  if (OFFLINE) { const o = await import('./offline.js'); mockBattle = o.mockExamContinue(mockChar(), mockBattle); return clone(mockBattle); }
+  if (OFFLINE) { const o = await import('./offline.js?v=9d1c820'); mockBattle = o.mockExamContinue(mockChar(), mockBattle); return clone(mockBattle); }
   return battleCall({ op: 'continue', battle: battleId });
 }
 
@@ -353,34 +353,34 @@ export async function examContinue(battleId) {
 const clone = (x) => JSON.parse(JSON.stringify({ ...x, m: undefined }));
 export async function getCatalog() {
   if (catalog) return catalog;
-  if (OFFLINE) { const o = await import('./offline.js'); return (catalog = { moves: o.MOVES, missions: o.MISSIONS }); }
+  if (OFFLINE) { const o = await import('./offline.js?v=9d1c820'); return (catalog = { moves: o.MOVES, missions: o.MISSIONS }); }
   const [mv, ms] = await Promise.all([sb.from('moves').select('*').order('sort'), sb.from('missions').select('*').eq('kind', 'mission').order('sort')]);
   if (mv.error) throw mv.error; if (ms.error) throw ms.error;
   return (catalog = { moves: mv.data, missions: ms.data });
 }
 export async function startMission(id) {
-  if (OFFLINE) { const o = await import('./offline.js'); mockBattle = o.mockStart(mockChar(), id); return clone(mockBattle); }
+  if (OFFLINE) { const o = await import('./offline.js?v=9d1c820'); mockBattle = o.mockStart(mockChar(), id); return clone(mockBattle); }
   return battleCall({ op: 'start', mission: id });
 }
 // action: {t:'move',to:[c,r]} | {t:'use',move,at:[c,r]} | {t:'end'} | {t:'flee'}
 export async function battleAct(battleId, action) {
-  if (OFFLINE) { const o = await import('./offline.js'); const c = mockChar(); const r = o.mockAct(c, mockBattle, action); saveMock(c); return clone(r); }
+  if (OFFLINE) { const o = await import('./offline.js?v=9d1c820'); const c = mockChar(); const r = o.mockAct(c, mockBattle, action); saveMock(c); return clone(r); }
   return battleCall({ op: 'act', battle: battleId, action });
 }
 export async function trainElement(element, times = 1) {
-  if (OFFLINE) { const o = await import('./offline.js'); const c = mockChar(); const r = o.trainElement(c, element, times); saveMock(c); return r; }
+  if (OFFLINE) { const o = await import('./offline.js?v=9d1c820'); const c = mockChar(); const r = o.trainElement(c, element, times); saveMock(c); return r; }
   const { data, error } = await sb.rpc('train_element', { p_element: element, p_times: times });
   if (error) throw rpcErr(error);
   return data;
 }
 export async function trainStat(stat, times = 1) {
-  if (OFFLINE) { const o = await import('./offline.js'); const c = mockChar(); const r = o.trainStat(c, stat, times); saveMock(c); return r; }
+  if (OFFLINE) { const o = await import('./offline.js?v=9d1c820'); const c = mockChar(); const r = o.trainStat(c, stat, times); saveMock(c); return r; }
   const { data, error } = await sb.rpc('train_stat', { p_stat: stat, p_times: times });
   if (error) throw rpcErr(error);
   return data;
 }
 export async function trainJutsu(move, times = 1) {
-  if (OFFLINE) { const o = await import('./offline.js'); const c = mockChar(); const r = o.trainJutsu(c, move, times); saveMock(c); return r; }
+  if (OFFLINE) { const o = await import('./offline.js?v=9d1c820'); const c = mockChar(); const r = o.trainJutsu(c, move, times); saveMock(c); return r; }
   const { data, error } = await sb.rpc('train_jutsu', { p_move: move, p_times: times });
   if (error) throw rpcErr(error);
   return data;
@@ -394,7 +394,7 @@ export async function updateAppearance(appearance) {
 }
 
 // ---------- live duels ----------
-const duelCall = async (body) => { if (OFFLINE) { const o = await import('./offline.js'); return o.mockDuelOp(mockChar(), body); } return battleCall(body); };
+const duelCall = async (body) => { if (OFFLINE) { const o = await import('./offline.js?v=9d1c820'); return o.mockDuelOp(mockChar(), body); } return battleCall(body); };
 export const duelChallenge = (target, kind = 'duel', war = null) => duelCall({ op: 'duel_challenge', target, kind, war });
 export const duelAccept = (duel) => duelCall({ op: 'duel_accept', duel });
 export const duelCancel = (duel) => duelCall({ op: 'duel_cancel', duel });
@@ -404,13 +404,13 @@ export const duelGet = (duel) => duelCall({ op: 'duel_get', duel });
 export const duelReady = (duel) => duelCall({ op: 'duel_ready', duel });
 // live updates of one duel row; returns an unsubscribe function
 export function watchDuel(id, cb) {
-  if (OFFLINE) { let off; import('./offline.js').then((o) => (off = o.mockWatch(id, cb))); return () => off && off(); }
+  if (OFFLINE) { let off; import('./offline.js?v=9d1c820').then((o) => (off = o.mockWatch(id, cb))); return () => off && off(); }
   const ch = sb.channel('duel-' + id).on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'duels', filter: `id=eq.${id}` }, (m) => cb(m.new)).subscribe();
   return () => sb.removeChannel(ch);
 }
 // every duel I'm part of (new challenges to me, and answers to mine)
 export async function watchMyDuels(myId, cb) {
-  if (OFFLINE) { const o = await import('./offline.js'); return o.mockWatch('*', cb); }
+  if (OFFLINE) { const o = await import('./offline.js?v=9d1c820'); return o.mockWatch('*', cb); }
   const { data } = await sb.auth.getSession(); if (data.session) sb.realtime.setAuth(data.session.access_token);
   const ch = sb.channel('my-duels-' + myId)
     .on('postgres_changes', { event: '*', schema: 'public', table: 'duels', filter: `b=eq.${myId}` }, (m) => cb(m.new))
@@ -425,21 +425,21 @@ export async function myActiveDuel() {
 
 // ---------- arena leaderboards ----------
 export async function arenaBoard(period, rank) {
-  if (OFFLINE) { const o = await import('./offline.js'); return o.mockBoard(period, rank, mockChar()); }
+  if (OFFLINE) { const o = await import('./offline.js?v=9d1c820'); return o.mockBoard(period, rank, mockChar()); }
   const { data, error } = await sb.rpc('arena_board', { p_period: period, p_rank: rank }); if (error) throw rpcErr(error); return data;
 }
 export async function arenaChampions() {
-  if (OFFLINE) { const o = await import('./offline.js'); return o.mockChampions(); }
+  if (OFFLINE) { const o = await import('./offline.js?v=9d1c820'); return o.mockChampions(); }
   const { data, error } = await sb.rpc('arena_champions'); if (error) throw rpcErr(error); return data || {};
 }
 // ---------- academy sparring lessons ----------
 export async function getLessons() {
-  if (OFFLINE) { const o = await import('./offline.js'); return o.LESSONS; }
+  if (OFFLINE) { const o = await import('./offline.js?v=9d1c820'); return o.LESSONS; }
   const { data, error } = await sb.from('missions').select('id,name,description,min_level,enemy_name,enemy_level,enemy_look,xp,ryo,sort').eq('kind', 'lesson').order('sort');
   if (error) throw rpcErr(error); return data;
 }
 export async function startLesson(id) {
-  if (OFFLINE) { const o = await import('./offline.js'); const c = mockChar(); mockBattle = o.mockStartLesson(c, id); return clone(mockBattle); }
+  if (OFFLINE) { const o = await import('./offline.js?v=9d1c820'); const c = mockChar(); mockBattle = o.mockStartLesson(c, id); return clone(mockBattle); }
   return battleCall({ op: 'lesson', lesson: id });
 }
 export async function claimArenaReward() {
@@ -448,18 +448,18 @@ export async function claimArenaReward() {
 }
 // ---------- world quests ----------
 export async function getQuestData() {
-  if (OFFLINE) { const o = await import('./offline.js'); return { lines: o.QUEST_LINES, steps: o.QUEST_STEPS }; }
+  if (OFFLINE) { const o = await import('./offline.js?v=9d1c820'); return { lines: o.QUEST_LINES, steps: o.QUEST_STEPS }; }
   const [l, s] = await Promise.all([sb.from('quest_lines').select('*').order('sort'), sb.from('quest_steps').select('*').order('step')]);
   if (l.error) throw rpcErr(l.error); if (s.error) throw rpcErr(s.error);
   return { lines: l.data, steps: s.data };
 }
 export async function startQuest(line) {
-  if (OFFLINE) { const o = await import('./offline.js'); mockBattle = o.mockStartQuest(mockChar(), line); return clone(mockBattle); }
+  if (OFFLINE) { const o = await import('./offline.js?v=9d1c820'); mockBattle = o.mockStartQuest(mockChar(), line); return clone(mockBattle); }
   const { data, error } = await sb.rpc('start_quest', { p_line: line }); if (error) throw rpcErr(error);
   return battleCall({ op: 'get', battle: data.id });
 }
 // ---------- team boss fights ----------
-const raidCall = async (body) => { if (OFFLINE) { const o = await import('./offline.js'); return o.mockRaidOp(mockChar(), body); } return battleCall(body); };
+const raidCall = async (body) => { if (OFFLINE) { const o = await import('./offline.js?v=9d1c820'); return o.mockRaidOp(mockChar(), body); } return battleCall(body); };
 export const raidCreate = (line) => raidCall({ op: 'raid_create', line });
 export const raidJoin = (raid) => raidCall({ op: 'raid_join', raid });
 export const raidLeave = (raid) => raidCall({ op: 'raid_leave', raid });
@@ -468,12 +468,12 @@ export const raidReady = (raid) => raidCall({ op: 'raid_ready', raid });
 export const raidAct = (raid, action) => raidCall({ op: 'raid_act', raid, action });
 export const raidTimeout = (raid, seq) => raidCall({ op: 'raid_timeout', raid, seq });
 export async function raidLobbies(line) {
-  if (OFFLINE) { const o = await import('./offline.js'); return o.mockLobbies(line); }
+  if (OFFLINE) { const o = await import('./offline.js?v=9d1c820'); return o.mockLobbies(line); }
   const { data, error } = await sb.from('raids').select('*').eq('line', line).in('status', ['lobby', 'prep', 'active']).gt('updated_at', new Date(Date.now() - 30 * 60000).toISOString()).order('created_at');
   if (error) throw rpcErr(error); return data || [];
 }
 export function watchRaid(id, cb) {
-  if (OFFLINE) { let off; import('./offline.js').then((o) => (off = o.mockWatch(id, cb))); return () => off && off(); }
+  if (OFFLINE) { let off; import('./offline.js?v=9d1c820').then((o) => (off = o.mockWatch(id, cb))); return () => off && off(); }
   const ch = sb.channel('raid-' + id).on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'raids', filter: `id=eq.${id}` }, (m) => cb(m.new)).subscribe();
   return () => sb.removeChannel(ch);
 }
@@ -484,7 +484,7 @@ export async function setTitle(title) {
 
 // ---------- village wars ----------
 const vrpc = async (fn, args = {}) => {
-  if (OFFLINE) { const o = await import('./offline.js'); return o.mockVillage(mockChar(), fn, args); }
+  if (OFFLINE) { const o = await import('./offline.js?v=9d1c820'); return o.mockVillage(mockChar(), fn, args); }
   const { data, error } = await sb.rpc(fn, args); if (error) throw rpcErr(error); return data;
 };
 export const villageInfo = () => vrpc('village_info');
@@ -508,7 +508,7 @@ export async function setLoadout(jutsu, items) {
 }
 export async function buyItem(item, qty = 1) {
   if (OFFLINE) {
-    const G = await import('./engine.js'), c = mockChar(), it = G.ITEMS[item], have = (c.items || {})[item] || 0, n = Math.min(qty, G.ITEM_STACK - have);
+    const G = await import('./engine.js?v=9d1c820'), c = mockChar(), it = G.ITEMS[item], have = (c.items || {})[item] || 0, n = Math.min(qty, G.ITEM_STACK - have);
     if (n < 1) throw new Error('You can carry at most 10 of each item.'); if (c.ryo < it.price * n) throw new Error('Not enough ryo.');
     c.ryo -= it.price * n; c.items = { ...(c.items || {}), [item]: have + n }; saveMock(c); return loadCharacter();
   }
@@ -517,17 +517,17 @@ export async function buyItem(item, qty = 1) {
 
 // ---------- equipment and ANBU ----------
 const mockGear = async (fn, a) => {
-  const G = await import('./engine.js'), c = mockChar(); c.gear = c.gear || {}; c.owned_gear = c.owned_gear || [];
+  const G = await import('./engine.js?v=9d1c820'), c = mockChar(); c.gear = c.gear || {}; c.owned_gear = c.owned_gear || [];
   if (fn === 'buy') { const g = G.GEAR[a]; if (c.owned_gear.includes(a)) throw new Error('You already own that.'); if (c.ryo < g.price) throw new Error('Not enough ryo.'); c.ryo -= g.price; c.owned_gear.push(a); }
   if (fn === 'equip') { if (a.id) c.gear[a.slot] = a.id; else delete c.gear[a.slot]; }
   saveMock(c); return loadCharacter();
 };
 // Auction House (offline mode keeps a small pretend market in memory)
 const rpcOk = async (fn, args) => { const { data, error } = await sb.rpc(fn, args); if (error) throw rpcErr(error); return data; };
-export async function marketBrowse() { if (OFFLINE) return (await import('./offline.js')).mockMarket(mockChar()).browse(); return rpcOk('market_browse', {}); }
-export async function marketList(kind, item, qty, price) { if (OFFLINE) { const c = mockChar(); const r = (await import('./offline.js')).mockMarket(c).list(kind, item, qty, price); saveMock(c); return loadCharacter(); } return rpcOk('market_list', { p_kind: kind, p_item: item, p_qty: qty, p_price: price }); }
-export async function marketBuy(id) { if (OFFLINE) { const c = mockChar(); (await import('./offline.js')).mockMarket(c).buy(id); saveMock(c); return loadCharacter(); } return rpcOk('market_buy', { p_id: id }); }
-export async function marketCancel(id) { if (OFFLINE) { const c = mockChar(); (await import('./offline.js')).mockMarket(c).cancel(id); saveMock(c); return loadCharacter(); } return rpcOk('market_cancel', { p_id: id }); }
+export async function marketBrowse() { if (OFFLINE) return (await import('./offline.js?v=9d1c820')).mockMarket(mockChar()).browse(); return rpcOk('market_browse', {}); }
+export async function marketList(kind, item, qty, price) { if (OFFLINE) { const c = mockChar(); const r = (await import('./offline.js?v=9d1c820')).mockMarket(c).list(kind, item, qty, price); saveMock(c); return loadCharacter(); } return rpcOk('market_list', { p_kind: kind, p_item: item, p_qty: qty, p_price: price }); }
+export async function marketBuy(id) { if (OFFLINE) { const c = mockChar(); (await import('./offline.js?v=9d1c820')).mockMarket(c).buy(id); saveMock(c); return loadCharacter(); } return rpcOk('market_buy', { p_id: id }); }
+export async function marketCancel(id) { if (OFFLINE) { const c = mockChar(); (await import('./offline.js?v=9d1c820')).mockMarket(c).cancel(id); saveMock(c); return loadCharacter(); } return rpcOk('market_cancel', { p_id: id }); }
 export async function hospitalHeal() {
   if (OFFLINE) { const c = mockChar(); const left = Math.max(0, Math.ceil(((c.injured_until || 0) - Date.now()) / 1000)); if (!left) throw new Error('You are not injured.');
     const cost = Math.max(5, Math.ceil((20 + c.level * 8) * left / 900)); if (c.ryo < cost) throw new Error(`Not enough ryo (${cost} needed). You can also rest until you heal.`);
@@ -536,7 +536,7 @@ export async function hospitalHeal() {
 }
 export async function buyScroll(id) {
   if (OFFLINE) {
-    const G = await import('./engine.js'), c = mockChar(), m = G.MOVES[id]; c.scrolls = c.scrolls || [];
+    const G = await import('./engine.js?v=9d1c820'), c = mockChar(), m = G.MOVES[id]; c.scrolls = c.scrolls || [];
     if (!m || !m.counter) throw new Error('The Library has no such scroll.'); if (G.RANKS.indexOf(c.rank) < 1) throw new Error('Library scrolls are for Genin and above.');
     if (c.scrolls.includes(id)) throw new Error('You already know that scroll.'); if (c.ryo < m.price) throw new Error('Not enough ryo.');
     c.ryo -= m.price; c.scrolls.push(id); saveMock(c); return loadCharacter();
@@ -552,7 +552,7 @@ export async function equipGear(slot, id) {
   const { data, error } = await sb.rpc('equip_gear', { p_slot: slot, p_id: id || null }); if (error) throw rpcErr(error); return data;
 }
 const arpc = async (fn, args = {}) => {
-  if (OFFLINE) { const o = await import('./offline.js'); return o.mockAnbu(mockChar(), fn, args); }
+  if (OFFLINE) { const o = await import('./offline.js?v=9d1c820'); return o.mockAnbu(mockChar(), fn, args); }
   const { data, error } = await sb.rpc(fn, args); if (error) throw rpcErr(error); return data;
 };
 export const anbuInfo = () => arpc('anbu_info');

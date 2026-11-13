@@ -1,5 +1,5 @@
 // Pixel-art battlefields: per-biome hex tiles (pixel-perfect, bevelled), scenery around the grid, and obstacles.
-import { outline } from './sprites.js';
+import { outline } from './sprites.js?v=9d1c820';
 
 // base: 3 tile shades; L/D: bevel light/dark; grout: gaps between tiles; out: ground beyond the grid;
 // tex: texture pixel colours; deco: accent pixels (flowers, pebbles...); prop: scenery kind around the edge; rock: obstacle style

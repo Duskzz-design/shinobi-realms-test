@@ -1,9 +1,9 @@
 // Auction House: fixed-price listings between players. Boss gear and shop consumables only.
 // 48-hour listings (unsold goods come back), 10% sales tax taken from the seller and removed from the game.
-import * as net from './net.js';
-import { gearIconHTML } from './itemicons.js';
-import * as G from './engine.js';
-import { gearLine } from './shop.js';
+import * as net from './net.js?v=9d1c820';
+import { gearIconHTML } from './itemicons.js?v=9d1c820';
+import * as G from './engine.js?v=9d1c820';
+import { gearLine } from './shop.js?v=9d1c820';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const h = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; };

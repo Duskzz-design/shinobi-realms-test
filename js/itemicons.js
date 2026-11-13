@@ -1,6 +1,6 @@
 // Pixel-art icons for every weapon and armour piece (16x16, auto-outlined to 18x18).
 // gearIconHTML(id) returns an <img> to drop into any screen in place of an emoji.
-import { outline } from './sprites.js';
+import { outline } from './sprites.js?v=9d1c820';
 
 const sh = (hex, amt) => {
   const n = parseInt(hex.slice(1), 16), f = (v) => Math.max(0, Math.min(255, v + amt));

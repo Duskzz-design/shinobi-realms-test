@@ -1,6 +1,6 @@
 // Library: counter scrolls (Substitution, Chakra Release, Dispel). Genin and above. Always ready in battle, no loadout slot.
-import * as net from './net.js';
-import * as G from './engine.js';
+import * as net from './net.js?v=9d1c820';
+import * as G from './engine.js?v=9d1c820';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const h = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; };

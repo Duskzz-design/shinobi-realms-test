@@ -1,7 +1,7 @@
 // Duel challenges: send, receive, wait, and launch the live duel screen.
-import * as net from './net.js';
-import { runDuel } from './hexbattle.js';
-import { openLoadout } from './loadout.js';
+import * as net from './net.js?v=9d1c820';
+import { runDuel } from './hexbattle.js?v=9d1c820';
+import { openLoadout } from './loadout.js?v=9d1c820';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const h = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; };

@@ -1,4 +1,2 @@
 User-agent: *
-Allow: /
-Disallow: /supabase/
-Sitemap: https://shinobirealms.com/sitemap.xml
+Disallow: /

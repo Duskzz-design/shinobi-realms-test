@@ -1,6 +1,6 @@
 // Arena: daily and monthly leaderboards per rank, and the energy bonus they unlock.
-import * as net from './net.js';
-import { ninjaSprite, VILLAGES, drawNinjaFit } from './sprites.js';
+import * as net from './net.js?v=9d1c820';
+import { ninjaSprite, VILLAGES, drawNinjaFit } from './sprites.js?v=9d1c820';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const h = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; };

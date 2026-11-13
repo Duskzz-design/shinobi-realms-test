@@ -1,12 +1,12 @@
 // Hex tactical battle screen (missions and exams). The battle server decides every roll; this file draws and animates.
-import * as net from './net.js';
-import { paintTerrain, obstacleSprite, LINE_BIOME, VILLAGE_BIOME } from './terrain.js';
-import { fillTextPx, EMOJI_RE, crispBody, crispTitle } from './pixemoji.js';
-import { gearIconHTML } from './itemicons.js';
-import { numbersInHeadingFont } from './numfont.js';
-import * as G from './engine.js';
-import { ninjaSprite, beastSprite, lookOf } from './sprites.js';
-import { enemyLook, beastVariant } from './enemylooks.js';
+import * as net from './net.js?v=9d1c820';
+import { paintTerrain, obstacleSprite, LINE_BIOME, VILLAGE_BIOME } from './terrain.js?v=9d1c820';
+import { fillTextPx, EMOJI_RE, crispBody, crispTitle } from './pixemoji.js?v=9d1c820';
+import { gearIconHTML } from './itemicons.js?v=9d1c820';
+import { numbersInHeadingFont } from './numfont.js?v=9d1c820';
+import * as G from './engine.js?v=9d1c820';
+import { ninjaSprite, beastSprite, lookOf } from './sprites.js?v=9d1c820';
+import { enemyLook, beastVariant } from './enemylooks.js?v=9d1c820';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const h = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; };

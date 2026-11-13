@@ -1,4 +1,4 @@
-import * as G from './engine.js';
+import * as G from './engine.js?v=9d1c820';
 // Offline test mode only (?offline): local copy of the server's rules and catalogue.
 export const MOVES = Object.entries(G.MOVES).map(([id, m], i) => ({ id, name: m.name, style: m.style, tier: m.tier, power: m.power, stamina: m.stamina, chakra: m.chakra,
   acc: m.acc, crit: m.crit, element: m.element, bloodline: m.bloodline, range_min: m.range[0], range_max: m.range[1], aoe: m.aoe, ap: m.ap, target: m.target, description: m.desc, sort: i + 1 }));

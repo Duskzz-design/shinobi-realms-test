@@ -1,5 +1,5 @@
 // Hospital: ninja who lose a fight are injured for 15 minutes. Rest for free, or pay to be healed now.
-import * as net from './net.js';
+import * as net from './net.js?v=9d1c820';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const h = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; };
