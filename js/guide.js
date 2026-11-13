@@ -6,12 +6,12 @@ const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '
 const h = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; };
 
 const STEPS = [
-  { id: 'lesson1', icon: '🥋', title: 'Visit the Academy', spot: 'academy',
-    text: 'Walk to the <b>Academy</b> and win <b>Sparring Lesson 1</b>. Lessons teach you how battles work, and you can\'t lose ryo there.',
-    done: (c, f) => (c.lessons_done || []).length >= 1 },
   { id: 'train', icon: '⭐', title: 'Train your ninja', btn: 'trainBtn',
     text: 'Tap the glowing <b>⭐ Train</b> button. Training spends <b>energy</b> to raise your stats and gives lots of <b>XP</b>. Energy refills over time, so come back every 15 minutes or so to train again.',
     done: (c, f) => f.trained },
+  { id: 'lesson1', icon: '🥋', title: 'Visit the Academy', spot: 'academy',
+    text: 'Walk to the <b>Academy</b> and win <b>Sparring Lesson 1</b>. Lessons teach you how battles work, and you can\'t lose ryo there.',
+    done: (c, f) => (c.lessons_done || []).length >= 1 },
   { id: 'mission', icon: '📜', title: 'Take a mission', spot: 'missions',
     text: 'Go to the <b>Mission Hall</b> and win a D-rank mission. Missions pay <b>ryo</b> and XP. Full rewards for your first <b>20 missions each day</b>.',
     done: (c, f) => f.mission || (c.mission_wins || 0) > 0 },
