@@ -1,13 +1,13 @@
-import { TITLE_FAMILY, BODY_FAMILY, isTitleFamily } from './fonts.js';
+import { TITLE_FAMILY, BODY_FAMILY, isTitleFamily } from './fonts.js?v=42165b9';
 // Hex tactical battle screen (missions and exams). The battle server decides every roll; this file draws and animates.
-import * as net from './net.js';
-import { paintTerrain, obstacleSprite, LINE_BIOME, VILLAGE_BIOME } from './terrain.js';
-import { fillTextPx, EMOJI_RE, crispBody, crispTitle } from './pixemoji.js';
-import { gearIconHTML } from './itemicons.js';
-import { numbersInHeadingFont } from './numfont.js';
-import * as G from './engine.js';
-import { ninjaSprite, beastSprite, lookOf } from './sprites.js';
-import { enemyLook, beastVariant } from './enemylooks.js';
+import * as net from './net.js?v=42165b9';
+import { paintTerrain, obstacleSprite, LINE_BIOME, VILLAGE_BIOME } from './terrain.js?v=42165b9';
+import { fillTextPx, EMOJI_RE, crispBody, crispTitle } from './pixemoji.js?v=42165b9';
+import { gearIconHTML } from './itemicons.js?v=42165b9';
+import { numbersInHeadingFont } from './numfont.js?v=42165b9';
+import * as G from './engine.js?v=42165b9';
+import { ninjaSprite, beastSprite, lookOf } from './sprites.js?v=42165b9';
+import { enemyLook, beastVariant } from './enemylooks.js?v=42165b9';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const h = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; };

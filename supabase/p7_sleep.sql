@@ -1,1 +1,0 @@
--- see migration p7_sleep_and_battlefield (applied via Supabase MCP once approved)

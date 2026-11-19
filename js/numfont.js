@@ -1,8 +1,8 @@
 // Numbers in the heading font (Press Start 2P), whose 2, 3, 5, 6 and 8 are all distinct.
 // Used on the battle screen: every number in its text is wrapped in <em class="n">, sized to match the
 // surrounding text and snapped so its pixels land on whole screen pixels.
-import { crispTitle, measurePx, fillTextPx } from './pixemoji.js';
-import { TITLE_FAMILY, BODY_FAMILY, isTitleFamily } from './fonts.js';
+import { crispTitle, measurePx, fillTextPx } from './pixemoji.js?v=42165b9';
+import { TITLE_FAMILY, BODY_FAMILY, isTitleFamily } from './fonts.js?v=42165b9';
 
 const NUM = /\d[\d,.]*%?/g;
 const SKIP = new Set(['SCRIPT', 'STYLE', 'TEXTAREA', 'INPUT', 'CANVAS', 'SVG']);

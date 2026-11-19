@@ -1,8 +1,8 @@
 /* Game fonts, served from our own site (the original font files, unmodified).
    Headings and buttons: Press Start 2P. Everything else: Pixelify Sans. */
-@font-face { font-family: 'Press Start 2P'; src: url(../assets/fonts/PressStart2P-Regular.ttf) format('truetype'); font-display: swap; }
+@font-face { font-family: 'Press Start 2P'; src: url(../assets/fonts/PressStart2P-Regular.ttf?v=42165b9) format('truetype'); font-display: swap; }
 /* Font trial (19 Nov 2026): Jersey 10 for headings and buttons, DotGothic16 for text. Original files, Latin set, from
    the Fontsource library on jsDelivr (pinned versions), SIL Open Font License 1.1. size-adjust only scales them on screen. */
 @font-face { font-family: 'Jersey 10'; src: url(https://cdn.jsdelivr.net/npm/@fontsource/jersey-10@5.3.0/files/jersey-10-latin-400-normal.woff2) format('woff2'); font-display: swap; size-adjust: 200%; }
 @font-face { font-family: 'DotGothic16'; src: url(https://cdn.jsdelivr.net/npm/@fontsource/dotgothic16@5.3.1/files/dotgothic16-latin-400-normal.woff2) format('woff2'); font-display: swap; size-adjust: 125%; }
-@font-face { font-family: 'Pixelify Sans'; font-weight: 400 700; src: url(../assets/fonts/PixelifySans.ttf) format('truetype'); font-display: swap; }
+@font-face { font-family: 'Pixelify Sans'; font-weight: 400 700; src: url(../assets/fonts/PixelifySans.ttf?v=42165b9) format('truetype'); font-display: swap; }
