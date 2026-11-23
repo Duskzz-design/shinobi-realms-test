@@ -34,7 +34,7 @@ export function openHospital(root, char, onChange) {
           <div class="sh-ryo">💰 ${n(char.ryo)} ryo</div>
           <button class="btn primary hp-heal" data-heal ${busy || char.ryo < cost ? 'disabled' : ''}>Heal now · ${n(cost)} ryo</button>
           <p class="sub">${char.ryo < cost ? 'Not enough ryo: rest instead, the timer keeps running.' : 'The price drops as you recover.'}</p>`
-      : `<div class="hp-card"><div class="hp-ic">💚</div><b>You are in good health</b><p>Losing a mission, quest, duel, war fight or boss fight leaves you injured for 15 minutes. Rest it off for free, or come here to be healed straight away for a fee.</p></div>`;
+      : `<div class="hp-card"><div class="hp-ic">💚</div><b>You are in good health</b><p>Losing a mission, quest, duel, war fight or boss fight leaves you injured for 15 minutes. Rest it off for free, or come here to be healed straight away for a fee. For everyday knocks between fights, visit the 🍜 Ramen Shop.</p></div>`;
     const b = body.querySelector('[data-heal]');
     if (b) b.onclick = async () => {
       busy = true; render();

@@ -16,6 +16,7 @@ import { openShop } from './shop.js';
 import { openLibrary } from './library.js';
 import { openMarket } from './market.js';
 import { openHospital, injuredLeft, mmss } from './hospital.js';
+import { openRamen, hpBarHTML } from './ramen.js';
 import { openGear } from './gear.js';
 import { ninjaSprite, emblem, VILLAGES, lookOf, drawNinjaFit } from './sprites.js';
 import { openMissionBoard, openTraining, runBattle, openExamHall } from './battle.js';
@@ -53,7 +54,7 @@ export async function enterWorld(app, char, hooks) {
     <div class="hud-top">
       <div class="plate">
         <canvas class="face" width="36" height="36"></canvas>
-        <div><b>${esc(char.name)}</b><small id="plateSub">Lv ${char.level} · ${esc(char.rank)}</small></div>
+        <div><b>${esc(char.name)}</b><small id="plateSub">Lv ${char.level} · ${esc(char.rank)}</small><div id="plateHp"></div></div>
       </div>
       <div class="hud-right">
         <div class="online" title="Ninja in this village right now">👥 <span id="count">1</span><span class="ow"> here</span></div>
@@ -331,9 +332,11 @@ export async function enterWorld(app, char, hooks) {
     root.querySelector('#ptsBadge').hidden = !(char.energy + Math.floor((Date.now() - (char._loadedAt || Date.now())) / 1000 / (char.energy_regen_sec || 9)) >= (char.energy_max || 100));
     me.level = char.level; me.rank = char.rank;
     const nl = lookOf(char.appearance, char.gear); if (JSON.stringify(nl) !== JSON.stringify(me.look)) { me.look = nl; drawFace(); room?.track(meta()); }
+    const hpEl = root.querySelector('#plateHp'); if (hpEl) hpEl.innerHTML = hpBarHTML(char, 'mini');
     guide?.update();
   }
-  if (net.isOffline()) window.__game = { startBattle: (m) => startBattle(m), board: () => openMissionBoard(root, char, startBattle), char, exam: () => startExam(), hall: () => openExamHall(root, char, startExam, startLesson), map: (f) => worldMap(f), shop: (t) => shop(t), library: () => openLibrary(root, char, () => refreshPlate()), market: () => openMarket(root, char, () => refreshPlate()), hospital: () => openHospital(root, char, () => refreshPlate()), gear: () => gear(), tower: (t) => kageTower(t), war: (id) => warAt(id), lesson: (id) => startLesson(id), guide: () => guide, handbook: (p) => handbook(p), click: (x, y) => { const sp = spotAt(x, y); sp ? goTo(sp.x, sp.y, sp) : goTo(x, y); }, me };
+  setInterval(() => { const hpEl = root.querySelector('#plateHp'); if (hpEl) hpEl.innerHTML = hpBarHTML(char, 'mini'); }, 5000);
+  if (net.isOffline()) window.__game = { startBattle: (m) => startBattle(m), board: () => openMissionBoard(root, char, startBattle), char, exam: () => startExam(), hall: () => openExamHall(root, char, startExam, startLesson), map: (f) => worldMap(f), shop: (t) => shop(t), library: () => openLibrary(root, char, () => refreshPlate()), market: () => openMarket(root, char, () => refreshPlate()), hospital: () => openHospital(root, char, () => refreshPlate()), ramen: () => openRamen(root, char, () => refreshPlate()), gear: () => gear(), tower: (t) => kageTower(t), war: (id) => warAt(id), lesson: (id) => startLesson(id), guide: () => guide, handbook: (p) => handbook(p), click: (x, y) => { const sp = spotAt(x, y); sp ? goTo(sp.x, sp.y, sp) : goTo(x, y); }, me };
   function startExam() { startBattle(null, () => net.startExam()); }
   function startLesson(id) { startBattle(null, () => net.startLesson(id)); }
   let warReturn = null; // reopen the war camp after a war duel
@@ -435,6 +438,7 @@ export async function enterWorld(app, char, hooks) {
     if (s.id === 'kage') { kageTower(); return; }
     if (s.id === 'shop') { shop(); return; }
     if (s.id === 'hospital') { openHospital(root, char, () => refreshPlate()); return; }
+    if (s.id === 'ramen') { openRamen(root, char, () => refreshPlate()); return; }
     if (s.id === 'market') { openMarket(root, char, () => refreshPlate()); return; }
     if (s.id === 'library') { openLibrary(root, char, () => refreshPlate()); return; }
     const [title, text] = SPOT_TEXT[s.id] || [s.name, ''];

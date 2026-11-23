@@ -1,5 +1,6 @@
 // Mission board, turn-based battle screen, and training (stat points) panel.
 import * as net from './net.js';
+import { hpFrac, hpBarHTML } from './ramen.js';
 import { injuredLeft, mmss } from './hospital.js';
 import { VILLAGES } from './sprites.js';
 import * as G from './engine.js';
@@ -36,8 +37,13 @@ function dailyLine(c) {
   return n >= lim ? `<p class="daily over">📋 Full rewards used today (${lim}/${lim}). Missions now pay 20% until tomorrow (London time).</p>`
     : `<p class="daily">📋 Full-reward missions today: <b>${n} / ${lim}</b></p>`;
 }
+// your health carries over between fights (v0.15.0): show it, with a tip when it's low
+function healthLine(char) {
+  const f = hpFrac(char);
+  return `<div class="mb-hp">${hpBarHTML(char)}${f < 0.999 ? `<small>${f < 0.4 ? '⚠️ Low health: rest, or eat at the 🍜 Ramen Shop before your next fight.' : 'Health refills on its own, fully in 15 minutes.'}</small>` : ''}</div>`;
+}
 export async function openMissionBoard(root, char, onPick) {
-  const el = overlay(root, 'board-wrap', `<div class="scroll board"><h3>Mission Board</h3><p class="sub">Pick a job. Win to earn XP and ryo.</p>${dailyLine(char)}<div class="mlist"><div class="spinner"></div></div><button class="btn ghost" data-x>Close</button></div>`);
+  const el = overlay(root, 'board-wrap', `<div class="scroll board"><h3>Mission Board</h3><p class="sub">Pick a job. Win to earn XP and ryo.</p>${dailyLine(char)}${healthLine(char)}<div class="mlist"><div class="spinner"></div></div><button class="btn ghost" data-x>Close</button></div>`);
   el.querySelector('[data-x]').onclick = () => el.remove();
   el.addEventListener('click', (e) => { if (e.target === el) el.remove(); });
   let cat;

@@ -20,7 +20,7 @@ export const BUILDINGS = [
   { id: 'arena', name: 'Arena', x: 6, y: 24, w: 10, h: 7, arena: true },
   { id: 'house', x: 6, y: 4, w: 5, h: 4 }, { id: 'library', name: 'Library', x: 12, y: 4, w: 5, h: 4 },
   { id: 'house', x: 32, y: 4, w: 5, h: 4 }, { id: 'kage', name: 'Kage Tower', x: 38, y: 4, w: 8, h: 6, big: true, tower: true },
-  { id: 'hospital', name: 'Hospital', x: 32, y: 24, w: 5, h: 4 }, { id: 'market', name: 'Auction House', x: 39, y: 22, w: 6, h: 5 },
+  { id: 'hospital', name: 'Hospital', x: 32, y: 24, w: 5, h: 4 }, { id: 'ramen', name: 'Ramen', x: 26, y: 24, w: 5, h: 4 }, { id: 'market', name: 'Auction House', x: 39, y: 22, w: 6, h: 5 },
 ];
 
 // deterministic RNG
@@ -275,7 +275,7 @@ function propSprite(p, th, village) {
 }
 
 // door curtain (noren) colour per building
-const NOREN = { academy: '#c43c32', missions: '#2f5fa8', shop: '#3a8a4a', library: '#7a3ea0', kage: '#6a3a8a', hospital: '#e8e0cf', market: '#c8892f' };
+const NOREN = { academy: '#c43c32', missions: '#2f5fa8', shop: '#3a8a4a', library: '#7a3ea0', kage: '#6a3a8a', hospital: '#e8e0cf', market: '#c8892f', ramen: '#d8402a' };
 function shadeHex(hex, amt) {
   const n = parseInt(hex.slice(1), 16);
   const f = (v) => Math.max(0, Math.min(255, v + amt));
@@ -347,6 +347,7 @@ function buildingSprite(b, th, village) {
     R(nc, dx - 1, dy, dw + 2, b.big ? 10 : 8); R(shadeHex(nc, -45), dx - 1, dy + (b.big ? 9 : 7), dw + 2, 1); R(shadeHex(nc, 30), dx - 1, dy, dw + 2, 1);
     R('#3e2410', cx - 1, dy + 1, 1, b.big ? 9 : 7); R('#3e2410', cx - Math.round(dw / 4) - 1, dy + 2, 1, b.big ? 8 : 6); R('#3e2410', cx + Math.round(dw / 4), dy + 2, 1, b.big ? 8 : 6);
     if (b.id === 'hospital') { R('#c43c32', cx - 1, dy + 2, 2, 5); R('#c43c32', cx - 3, dy + 4, 6, 1); }
+    if (b.id === 'ramen') { R('#fff4dc', cx - 3, dy + 3, 6, 1); R('#fff4dc', cx - 2, dy + 4, 4, 2); R('#3e2410', cx - 2, dy + 1, 1, 2); R('#3e2410', cx + 1, dy + 1, 1, 2); } // a white bowl and chopsticks on the red curtain
     R(th.stone, dx - 4, base - 2, dw + 8, 2); R(shadeHex(th.stone, 22), dx - 4, base - 2, dw + 8, 1);
     // name board above the door
     if (b.name) signBoard(x, cx, dy - 15, b.name.toUpperCase());

@@ -4,9 +4,14 @@
 // Every live release has its own number; tools/deploy.py tags it in GitHub (v0.13.0, ...).
 // notice: true shows a one-time "What's new" note to players (bigger updates only).
 
-export const VERSION = '0.14.0';
+export const VERSION = '0.15.0';
 
 export const CHANGES = [
+  { v: '0.15.0', date: '23 Nov 2026', notice: true, title: 'Lasting health and the Ramen Shop', items: [
+    '<b>Your health now carries over</b> from fight to fight. Watch the ❤ bar under your name.',
+    'Health <b>refills on its own</b>, fully in 15 minutes. Levelling up fills it too.',
+    'New <b>🍜 Ramen Shop</b> in every village: Small, Large and Deluxe bowls heal 25%, 50% or all of your health.',
+  ] },
   { v: '0.14.0', date: '19 Nov 2026', notice: true, title: 'Fair play', items: [
     'New <b>🚩 Report player</b> button on every ninja\'s profile, for cheating, bots, second accounts or bad behaviour. Reports are private.',
     'Clear <b>fair-play rules</b> in the Terms: one account per person, no bots, report bugs instead of using them.',

@@ -39,12 +39,13 @@ export const PAGES = [
     <p>From <b>Genin</b> on, tap another ninja in the village to <b>challenge them to a duel</b>.</p>
     <p>The <b>Arena</b> has ranked fights for Arena points. The top ninja get a statue in the village.</p>
     <p>Want a break? Choose <b>💤 Go to sleep</b> in the menu, and nobody can challenge you.</p>` },
-  { id: 'hospital', icon: '🏥', title: 'Injuries & the Hospital', body: `
-    <p>If you <b>lose a fight</b> (a mission, quest, duel or boss), you are <b>injured for 15 minutes</b>. The 🤕 badge shows the time left.</p>
-    <p>While injured you <b>can't fight or train</b>. Wait it out, or pay the <b>Hospital</b> to heal you instantly. The price grows with your level.</p>` },
+  { id: 'hospital', icon: '🍜', title: 'Health, Ramen & the Hospital', body: `
+    <p><b>Your health carries over</b> from one fight to the next: missions, quests, lessons, exams, duels, the Arena and boss fights all start with the health you have now. The ❤ bar under your name shows it.</p>
+    <p>Health <b>refills on its own</b>, fully in <b>15 minutes</b>. Levelling up or passing a rank exam fills it straight away. In a hurry? Eat at the <b>🍜 Ramen Shop</b>: Small (25%), Large (50%) or Deluxe (full). Prices grow with your level.</p>
+    <p>If you <b>lose</b> a fight you're also <b>injured for 15 minutes</b>: you can't fight or train until you heal. Wait it out, or pay the <b>Hospital</b> to heal you instantly (this also fills your health).</p>` },
   { id: 'ryo', icon: '💰', title: 'Ryo & trading', body: `
     <p>Earn ryo from missions, quests and bosses. Spend it at:</p>
-    <ul><li><b>Tool Shop</b>: weapons, armour and battle items.</li><li><b>Library</b>: counter scrolls.</li><li><b>Hospital</b>: instant heals.</li><li><b>Auction House</b>: buy from other players.</li></ul>
+    <ul><li><b>Tool Shop</b>: weapons, armour and battle items.</li><li><b>Library</b>: counter scrolls.</li><li><b>Ramen Shop</b>: bowls that restore health.</li><li><b>Hospital</b>: instant heals after an injury.</li><li><b>Auction House</b>: buy from other players.</li></ul>
     <p>At the Auction House you set a fixed price. Listings last <b>48 hours</b>, you can have up to <b>10</b> at once, and a <b>10% sales tax</b> is taken when an item sells.</p>` },
   { id: 'world', icon: '🗺️', title: 'Quests, bosses & villages', body: `
     <p>Leave through the <b>Village Gate</b> to open the <b>World Map</b>. Quest lines tell a story over several fights and end with a <b>boss</b>, which can drop rare gear. Jonin quest lines open at levels 30, 40 and 50.</p>
