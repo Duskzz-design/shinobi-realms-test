@@ -1,9 +1,9 @@
-import { BODY_UNIT, TITLE_UNIT } from './fonts.js';
+import { BODY_UNIT, TITLE_UNIT } from './fonts.js?v=be33998';
 // Pixel-art replacements for every emoji in the game. Each icon is drawn on a 16x16 grid with a shared
 // palette and auto-outlined. startPixify() swaps emoji in page text for <img> icons as screens appear;
 // fillTextPx() does the same for text drawn on canvases.
-import { outline } from './sprites.js';
-import { gearIconURL } from './itemicons.js';
+import { outline } from './sprites.js?v=be33998';
+import { gearIconURL } from './itemicons.js?v=be33998';
 
 const PAL = {
   k: '#24160e', w: '#ffffff', W: '#e8e0cf', g: '#8a8f9c', G: '#c9ccd4', s: '#5a5f6a', x: '#3a3e48', X: '#1d1d24',

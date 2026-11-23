@@ -1,8 +1,8 @@
 // War battlefield: a small walkable map at the territory. Walk around, tap an enemy ninja, press Attack.
-import * as net from './net.js';
-import { fillTextPx, measurePx } from './pixemoji.js';
-import { drawNameTag } from './numfont.js';
-import { ninjaSprite, VILLAGES, lookOf, drawNinjaFit } from './sprites.js';
+import * as net from './net.js?v=be33998';
+import { fillTextPx, measurePx } from './pixemoji.js?v=be33998';
+import { drawNameTag } from './numfont.js?v=be33998';
+import { ninjaSprite, VILLAGES, lookOf, drawNinjaFit } from './sprites.js?v=be33998';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const h = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; };

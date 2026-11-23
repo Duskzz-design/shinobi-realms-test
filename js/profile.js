@@ -1,9 +1,9 @@
 // Player profiles: a picture (uploaded, or the ninja's own portrait), character details, and badges.
 // Anyone can open anyone's profile; only the owner can change their picture.
-import * as net from './net.js';
-import { VILLAGES, lookOf, drawNinjaFit } from './sprites.js';
-import { ELEMENT_INFO, BLOODLINES } from './engine.js';
-import { numbersInHeadingFont } from './numfont.js';
+import * as net from './net.js?v=be33998';
+import { VILLAGES, lookOf, drawNinjaFit } from './sprites.js?v=be33998';
+import { ELEMENT_INFO, BLOODLINES } from './engine.js?v=be33998';
+import { numbersInHeadingFont } from './numfont.js?v=be33998';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 

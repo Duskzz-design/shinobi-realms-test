@@ -1,6 +1,6 @@
 // Village maps: tile grid, collision, props, and pixel-art rendering per village theme.
-import { outline } from './sprites.js';
-import { drawText, textWidth } from './pixfont.js';
+import { outline } from './sprites.js?v=be33998';
+import { drawText, textWidth } from './pixfont.js?v=be33998';
 
 export const T = 16;
 export const MW = 48, MH = 36;

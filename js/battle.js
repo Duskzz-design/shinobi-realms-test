@@ -1,9 +1,9 @@
 // Mission board, turn-based battle screen, and training (stat points) panel.
-import * as net from './net.js';
-import { hpFrac, hpBarHTML } from './ramen.js';
-import { injuredLeft, mmss } from './hospital.js';
-import { VILLAGES } from './sprites.js';
-import * as G from './engine.js';
+import * as net from './net.js?v=be33998';
+import { hpFrac, hpBarHTML } from './ramen.js?v=be33998';
+import { injuredLeft, mmss } from './hospital.js?v=be33998';
+import { VILLAGES } from './sprites.js?v=be33998';
+import * as G from './engine.js?v=be33998';
 
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const h = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; };
@@ -181,4 +181,4 @@ const fmt = (s) => s >= 60 ? `${Math.floor(s / 60)}m ${s % 60}s` : `${s}s`;
 function toast(msg, kind = 'err') { const t = h(`<div class="toast ${kind}">${esc(msg)}</div>`); document.body.appendChild(t); setTimeout(() => t.remove(), 3000); }
 function alertMsg(el, msg) { toast(msg); }
 
-export { runBattle } from './hexbattle.js';
+export { runBattle } from './hexbattle.js?v=be33998';

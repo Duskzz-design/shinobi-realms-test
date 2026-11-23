@@ -2,7 +2,7 @@
 // A pixel font is only crisp when each of its pixels covers a whole number of screen pixels.
 // This nudges every font size in our stylesheets to the nearest such size (usually by about 1px).
 //   Pixelify Sans: one font pixel = 1/10.886 em    Press Start 2P: one font pixel = 1/8 em
-import { BODY_UNIT, TITLE_UNIT, isTitleFamily, TRIAL } from './fonts.js';
+import { BODY_UNIT, TITLE_UNIT, isTitleFamily, TRIAL } from './fonts.js?v=be33998';
 function isTitle(rule) {
   const fam = rule.style.fontFamily || '';
   if (fam) return isTitleFamily(fam);

@@ -1,8 +1,8 @@
 // Tool Shop: consumable items, weapons and armour (Basic for everyone, Advanced from Chunin), plus the ANBU counter.
-import * as net from './net.js';
-import { itemIconHTML } from './itemicons.js';
-import { gearIconHTML } from './itemicons.js';
-import * as G from './engine.js';
+import * as net from './net.js?v=be33998';
+import { itemIconHTML } from './itemicons.js?v=be33998';
+import { gearIconHTML } from './itemicons.js?v=be33998';
+import * as G from './engine.js?v=be33998';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const h = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; };

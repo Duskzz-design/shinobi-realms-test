@@ -1,7 +1,7 @@
 // Health that lasts between fights (v0.15.0) and the Ramen Shop.
 // Health is a share of your maximum (char.hp_frac from the server) that refills fully in 15 minutes.
-import * as net from './net.js';
-import { poolsOf, gearStats } from './engine.js';
+import * as net from './net.js?v=be33998';
+import { poolsOf, gearStats } from './engine.js?v=be33998';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const h = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; };

@@ -1,12 +1,12 @@
-import * as net from './net.js';
-import { sharpenText } from './crisp.js';
-import { startPixify } from './pixemoji.js';
-import { startTitleScene } from './scene.js';
-import { enterWorld } from './game.js';
-import { VERSION } from './version.js';
-import { humanCheck, mountEmail, authMessage, linkParams, cleanLinkParams, newPasswordCard } from './emailauth.js';
-import { ELEMENT_INFO, BLOODLINES, ELEMENTS } from './engine.js';
-import { ninjaSprite, emblem, PALETTES, HAIR_STYLES, BAND_SPOTS, VILLAGES, DEFAULT_LOOK, lookOf } from './sprites.js';
+import * as net from './net.js?v=be33998';
+import { sharpenText } from './crisp.js?v=be33998';
+import { startPixify } from './pixemoji.js?v=be33998';
+import { startTitleScene } from './scene.js?v=be33998';
+import { enterWorld } from './game.js?v=be33998';
+import { VERSION } from './version.js?v=be33998';
+import { humanCheck, mountEmail, authMessage, linkParams, cleanLinkParams, newPasswordCard } from './emailauth.js?v=be33998';
+import { ELEMENT_INFO, BLOODLINES, ELEMENTS } from './engine.js?v=be33998';
+import { ninjaSprite, emblem, PALETTES, HAIR_STYLES, BAND_SPOTS, VILLAGES, DEFAULT_LOOK, lookOf } from './sprites.js?v=be33998';
 
 const app = document.getElementById('app');
 const bg = document.getElementById('bg');
